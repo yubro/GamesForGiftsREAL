@@ -9,7 +9,8 @@
     "fs": "0.0.1-security",
     "phaser-ce": "^2.7.3",
     "request": "^2.81.0",
-    "socket.io": "^1.7.3"
+    "socket.io": "^1.7.3",
+    "url": "^0.11.0"
   },
   "devDependencies": {},
   "scripts": {

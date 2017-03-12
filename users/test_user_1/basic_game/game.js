@@ -1,3 +1,6 @@
+if( typeof(assets_path) == 'undefined') {
+  alert("ERROR: missing assets path");
+}
 var game;
 var ship;
 var text;
@@ -14,8 +17,8 @@ game = new Phaser.Game(800, 600, Phaser.AUTO, 'phaser_container', { preload: pre
 function preload () {
 
   // load images
-  game.load.image('logo', 'phaser.png');
-  game.load.image('mc', 'mc.png');
+  game.load.image('logo', assets_path + 'phaser.png');
+  game.load.image('mc', assets_path + 'mc.png');
 
 }
 
@@ -42,14 +45,12 @@ function loadComplete() {
       ship.loadTexture('mc',0,true);
 }
 
-myFunction = function() {
-
-  // change mc.png file with other file
-  swapShipTexture();
-
+swapShipTexture = function() {
+  game.load.image('mc', assets_path + 'red_hat.png');
+  game.load.start();
 }
 
-swapShipTexture = function() {
-  game.load.image('mc', 'red_hat.png');
-  game.load.start();
+myFunction = function() {
+  // change mc.png file with other file
+  swapShipTexture();
 }

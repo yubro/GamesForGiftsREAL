@@ -2,7 +2,6 @@
 built using node.js, angular, and phaser
 */
 
-
 // usual requires
 const express = require('express');
 const app = express();                    // express is just callback functions
@@ -11,6 +10,8 @@ const io = require('socket.io')(http);    // get sockets capability
 
 const fs = require('fs');
 const request = require('request');
+const url = require('url');
+
 
 // download function
 var download = function(uri, filename, callback){
@@ -23,7 +24,7 @@ var download = function(uri, filename, callback){
 };
 
 download('http://www.pngall.com/wp-content/uploads/2016/03/Penguin-Download-PNG.png', 'mc.png', function(){
-  console.log('done');
+  console.log('done downloading image');
 });
 
 // test
@@ -37,7 +38,8 @@ app.use(express.static(__dirname)); // add to remote folder
 //////////////////
 
 app.get('/', function(req, res){                // request and response
-  res.sendFile(__dirname + '/index.html');
+  res.sendFile(__dirname + '/app.html');
+  console.log( req.originalUrl );
 });
 
 ////////////////////
@@ -45,11 +47,16 @@ app.get('/', function(req, res){                // request and response
 // not working for some reason...
 io.on('connection', function(socket){
 
-  console.log('a user connected');
+  console.log('a user connected' + socket.id);
+
+  // dont yet create a random directory --> check path
 
   socket.on('disconnect', function(){          // disconnect handling
     console.log('user disconnected');
   });
+
+
+
 
 });
 
