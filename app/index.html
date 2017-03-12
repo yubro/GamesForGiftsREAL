@@ -7,19 +7,19 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.2/semantic.min.js"></script>
     <script src="bower_components/angular/angular.js"></script>
+
   </head>
   <body>
 
     <div class="ui two column grid container">
       <div class = "column">
-
-    <form class="ui form">
-      <div class="field">
-        <label>Character Model</label>
-        <input type="text" name="Picture" placeholder="Image File (.png pref)">
-      </div>
-      <button class="ui right floated button" type="submit">Submit</button>
-    </form>
+    <form class="ui form" enctype="multipart/form-data" method="post" action="#">
+    <div class="field">
+      <label>Character Model</label>
+      <input id="fileupload" name="myfile" type="file" />
+      <input type="submit" value="Upload .png File" id="submit" onclick="UploadFunction" />
+    </div>
+  </form>
 
     <form style = "margin-top:140px;" class="ui form">
       <div class="field">
@@ -64,7 +64,7 @@
 
   <div style= "margin-top:40px;" class="column">
         <img style = "position:fixed;" class ="ui right fixed medium image" src="Logo.png" >
-    </div>
+  </div>
  </div>
 
   </body>
